@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Tic Tac Toe </title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,600,800' rel='stylesheet' type='text/css'>
+
+    <!-- external CSS link -->
+    <!--order-->
+    <link rel="stylesheet" href="CSS/reset.css"><!--match the brwoser element format-->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <header>
+        <h1> Tic-Tac-Toe </h1>
+    </header>
+
+  
+   <section class="row1">
+        <div class="row1 game-cell" id="box1"></div>
+        <div class="row1 game-cell" id="box2"></div>
+        <div class="row1 game-cell" id="box3"></div>
+     </section>
+
+   <section class="row2">
+        <div class="row2 game-cell" id="box4"></div>
+        <div class="row2 game-cell" id="box5"></div>
+        <div class="row2 game-cell" id="box6"></div>
+   </section>
+
+   <section class="row3">
+        <div class="row3 game-cell" id="box7"></div>
+        <div class="row3 game-cell" id="box8"></div>
+        <div class="row3 game-cell" id="box9"></div>
+   </section>
+   <p id='message'></p>
+   <!--<section class="message">
+     <p id="player1">player1 won</p>
+     <p id="player2">player2 won</p>
+     <p id="TIE">Keep trying</p>
+</section>-->
+
+  
+
+   <section class="calculate">
+        <p id="player1"> player1: 0 </p> 
+        <br> 
+        <p id="TIE"> TIE: 0  </p> 
+        <br>
+        <p id="player2"> player2: 0 </p>
+    </section>
+   
+    <button id="newChallenge">2 player</button>
+    <button id="computerGame">Play with computer</button>
+    
+   <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+   <script src="main.js"></script>
+</body>
+</html>
