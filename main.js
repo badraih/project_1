@@ -5,16 +5,15 @@ var countGame=0;
 var countPlayer1=0;
 var countPlayer2=0;
 var countTIE=0;
-// var CountComputerGame=0;
+ var CountComputerGame=0;
 var flag=false;
     
 ///when user clicked change the box content to X value or O value
 function clickOnBox(event){
-  event.preventDefault();
+ 
    if ($(event.target).text() ==="" && gameOver===false) {
       $(event.target).text(XO);
       countGame++;//plus countGame
-
       //search about the box id by switch then fill the box
         switch(event.target.id){
         case "box1":
@@ -97,7 +96,6 @@ function clickOnBox(event){
          else{
             XO="X";}
       }
-    
       
    }
 }//end function
@@ -305,8 +303,7 @@ function computerTurn(){
    if((((arr1[0][0]!=="" && arr1[0][1]!=="") && (arr1[0][0]===arr1[0][1]))||((arr1[2][0]!=="" &&arr1[1][1]!=="") && (arr1[2][0]===arr1[1][1]))||((arr1[1][2]!=="" && arr1[2][2]!=="") && (arr1[1][2]===arr1[2][2])))&& ($("#box3").text()==="")){
       $("#box3").text("O");
       arr1[0][2]="O";
-      checkWon();//call checkWon
-
+      checkWon();
 }
 else if((((arr1[0][2]!=="" && arr1[2][2]!=="") && (arr1[0][2]===arr1[2][2]))||((arr1[1][0]!=="" && arr1[1][1]!=="")&&(arr1[1][0]===arr1[1][1])))&& ($("#box6").text()==="")){
       $("#box6").text("O");
