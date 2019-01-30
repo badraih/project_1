@@ -12,6 +12,7 @@ header h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color:rgb(222, 245, 222);
     margin-bottom: 60px;}
+    
 #message {
    color:rgb(222, 245, 222);
    width: 600px;
@@ -83,6 +84,7 @@ header h1{
 
     #computerGame{
        margin-top: 40px;
+       margin-bottom: 20px;
        border: 8px solid white;
        margin-left: 1000px;
        width: 200px;
@@ -91,7 +93,8 @@ header h1{
 
     
       #newChallenge{
-      margin-top: 50px;
+      margin-top: 40px;
+      
        border: 8px solid white;
        margin-left: 1000px;
        width: 200px;

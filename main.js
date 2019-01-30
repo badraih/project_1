@@ -1,11 +1,23 @@
+//represent board by array 3*3 to store the user value
+//declare countGame to calculate how many user click on box
+// declare three count for player1, player2, TEI for calculate how many user won 
+//declare boolean value name is flag --> true the user will play with computer 
+//--> false the user will play with another player
+// used function clickOnBox to change the box content to X value or O value
+//inside function clickOnBox search about the box id by switch then fill the box when the box is empty 
+   //when user enter his value plus countGame by one (countGame++; ) to know if the game is end without winner
+  // call checkWon to check after user fill the box if there is winner or not 
+      //if there is winner show the message (player.. won) the call the function clear to clear all box in board and plus countPlayer ().
+      //if there is no winner show message (Keep trying) and plus countTEi
+
 var arr1=[["","",""],["","",""],["","",""]];////represent board by array 3*3 to store the user value
-var XO="X";//store the letter x or o
+var XO="X";//to store x or o
 var message="";
 var countGame=0;
 var countPlayer1=0;
 var countPlayer2=0;
 var countTIE=0;
- var CountComputerGame=0;
+var CountComputerGame=0;
 var flag=false;
 var gameOver = false;
     
@@ -88,8 +100,8 @@ function clickOnBox(event){
          }
          
       }
-
-      checkWon();
+      if(flag===false){
+      checkWon();}
       //change "XO" to O or O to X
       if(flag===false){
          if(XO==="X"){
@@ -101,8 +113,7 @@ function clickOnBox(event){
    }
 }//end function
  
-$('.game-cell').on("click",clickOnBox);//select class game-cell the call function clickOnBox
-
+$('.game-cell').on("click",clickOnBox); //select class game-cell the call function clickOnBox
 
 // used when the computer choose the box randomly 
 function storeArr(id){
@@ -153,7 +164,7 @@ function storeArr(id){
 
 // to check after user fill the box if there is winner or not 
 function checkWon(){
-      if((arr1[0][0]===arr1[0][1])&& (arr1[0][1]===arr1[0][2])){
+      if(((arr1[0][0]===arr1[0][1])&&(arr1[0][1]!=="")) && (arr1[0][1]===arr1[0][2])){
          if(arr1[0][0]==="X"){
             player1Won();  //call player1Won to show the message
          }
@@ -162,7 +173,7 @@ function checkWon(){
             player2Won();//call player2Won to show the message
          }
       }
-      else if((arr1[1][0]===arr1[1][1])&& (arr1[1][1]===arr1[1][2])){
+      else if(((arr1[1][0]===arr1[1][1]) && (arr1[1][1]!=="")) && (arr1[1][1]===arr1[1][2])){
          if(arr1[1][0]==="X"){
             player1Won();// call player1Won to show the message
          }
@@ -171,7 +182,7 @@ function checkWon(){
             player2Won();//call player2Won to show the message
          }
       }
-      else if((arr1[2][0]===arr1[2][1])&& (arr1[2][1] ===arr1[2][2])){
+      else if(((arr1[2][0]===arr1[2][1]) && (arr1[2][1]!=="")) && (arr1[2][1] ===arr1[2][2])){
          if(arr1[2][0]==="X"){
             player1Won();// call player1 to show the message
          }
@@ -180,17 +191,16 @@ function checkWon(){
          }
       }
 
-      else if((arr1[0][2]===arr1[1][1])&&(arr1[1][1]===arr1[2][0])){
+      else if(((arr1[0][2]===arr1[1][1])&&(arr1[1][1]===arr1[2][0]))&&(arr1[1][1]!=="")){
          if(arr1[0][2]==="X"){
             player1Won();// call player1Won to show the message
-           
           }
 
          else if(arr1[0][2]==="O"){
             player2Won();//call player2Won to show the message
            }
       }
-      else if((arr1[0][0]===arr1[1][1])&& (arr1[1][1]===arr1[2][2])){
+      else if(((arr1[0][0]===arr1[1][1])&& (arr1[1][1]===arr1[2][2]))&& (arr1[1][1]!=="")){
          if(arr1[0][0]==="X"){
             player1Won();  // call player1Won to show the message
          }
@@ -198,7 +208,7 @@ function checkWon(){
             player2Won();//call player2Won to show the message
          }
       }
-      else if((arr1[0][0]===arr1[1][0])&& (arr1[1][0]===arr1[2][0])){
+      else if(((arr1[0][0]===arr1[1][0])&& (arr1[1][0]===arr1[2][0]))&& (arr1[1][0]!=="")){
          if(arr1[0][0]==="X"){
             player1Won();// call player1Won to show the message
          }
@@ -206,7 +216,7 @@ function checkWon(){
             player2Won();
          }
       }
-      else if((arr1[0][1]===arr1[1][1]) && (arr1[1][1]===arr1[2][1])){
+      else if(((arr1[0][1]===arr1[1][1]) && (arr1[1][1]===arr1[2][1]))&&(arr1[1][1]!=="")){
          if(arr1[0][1]==="X"){
             player1Won();//call player1Won to show the message
          }
@@ -214,11 +224,18 @@ function checkWon(){
             player2Won();
          }
       }
-      else if((arr1[0][2]===arr1[1][1])&& (arr1[1][1]===arr1[2][0])){
+      else if(((arr1[0][2]===arr1[1][1])&& (arr1[1][1]===arr1[2][0]))&& (arr1[1][1]!=="")){
          if(arr1[0][2]==="X"){
             player1Won();//call player1Won to show the message
          }
-
+         else if(arr1[0][2]==="O"){
+            player2Won();//call player2Won to show the message
+         }
+      }
+      else if(((arr1[0][2]===arr1[1][2])&& (arr1[1][2]===arr1[2][2]))&& (arr1[1][2]!=="")){
+         if(arr1[0][2]==="X"){
+            player1Won();//call player1Won to show the message
+         }
          else if(arr1[0][2]==="O"){
             player2Won();//call player2Won to show the message
          }
@@ -227,7 +244,7 @@ function checkWon(){
          $('#message').text("Keep trying");
          gameOver=true;
          countTIE++;
-            $("#TIE").text("Keep trying: "+" "+(countTIE));
+            $("#TIE").text("TIE: "+" "+(countTIE));
          setTimeout(clearBox,3000);
       }
 }//end function
@@ -237,14 +254,14 @@ function player1Won(){
    $('#message').text("player1 won");
    gameOver=true;
    countPlayer1++;
-   $("#player1").text("player1: "+countPlayer1);
+   $("#player1").text("player1: "+(countPlayer1));
    setTimeout(clearBox,3000);}
 // player2Won() show the message when player2 won 
 function player2Won(){
 $('#message').text("player2 won");
 gameOver=true;
 countPlayer2++;
-$("#player2").text("player2: "+countPlayer2);
+$("#player2").text("player2: "+(countPlayer2));
 setTimeout(clearBox,3000);}
 
 // clear all page when user choose another type(2 player, play with computer)
@@ -265,6 +282,9 @@ setTimeout(clearBox,3000);}
 
       // clear all page when user choose another type(2 player, play with computer)
       function clearBox2(){
+         countPlayer1=0;
+         countPlayer2=0;
+         countTIE=0;
          $("#message").text("");
          gameOver=false;
          $("#box1").text("");
@@ -278,10 +298,10 @@ setTimeout(clearBox,3000);}
          $("#box9").text("");
          countGame=0;
          arr1=[["","",""],["","",""],["","",""]];
-         countPlayer1=0;
-         countPlayer2=0;
-         countTIE=0;
-          XO="X";}
+          XO="X";
+          $("#TIE").text("TIE: "+" "+(0));
+          $("#player1").text("player1: "+(0));
+          $("#player2").text("player2: "+(0));}
 
           // set the box value randomly when computer play
           function randomID(){
@@ -289,15 +309,15 @@ setTimeout(clearBox,3000);}
                if($("#box"+i).text() ===""){ 
                   $("#box"+i).text("O");
                   storeArr("box"+i);
-                  // checkWon();
                   return;
                }
             } 
          } 
 
 // computerTurn function to know where the first player play 
-// make the first player unable to win 
+//then make the first player unable to win 
 function computerTurn(){
+   checkWon();
    if((((arr1[0][0]!=="" && arr1[0][1]!=="") && (arr1[0][0]===arr1[0][1]))||((arr1[2][0]!=="" &&arr1[1][1]!=="") && (arr1[2][0]===arr1[1][1]))||((arr1[1][2]!=="" && arr1[2][2]!=="") && (arr1[1][2]===arr1[2][2])))&& ($("#box3").text()==="")){
       $("#box3").text("O");
       arr1[0][2]="O";
@@ -346,11 +366,9 @@ else if((((arr1[0][2]!=="" && arr1[1][1]!=="") && ((arr1[0][2]===arr1[1][1])))||
       checkWon();
    }
 else{
-   
-   randomID();//fill any empty box 
+randomID();//fill any empty box 
 }
 }
-
 
 function EndComputerGame(){
       flag=false;//set flag as a false value ** to be computer game **
