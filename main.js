@@ -7,6 +7,7 @@ var countPlayer2=0;
 var countTIE=0;
  var CountComputerGame=0;
 var flag=false;
+var gameOver = false;
     
 ///when user clicked change the box content to X value or O value
 function clickOnBox(event){
@@ -237,16 +238,14 @@ function player1Won(){
    gameOver=true;
    countPlayer1++;
    $("#player1").text("player1: "+countPlayer1);
-   setTimeout(clearBox,3000);
-}
+   setTimeout(clearBox,3000);}
 // player2Won() show the message when player2 won 
 function player2Won(){
 $('#message').text("player2 won");
 gameOver=true;
 countPlayer2++;
 $("#player2").text("player2: "+countPlayer2);
-setTimeout(clearBox,3000);
-}
+setTimeout(clearBox,3000);}
 
 // clear all page when user choose another type(2 player, play with computer)
    function clearBox(){
@@ -262,8 +261,7 @@ setTimeout(clearBox,3000);
       $("#box8").text("");
       $("#box9").text("");
       countGame=0;
-      arr1=[["","",""],["","",""],["","",""]];
-      }
+      arr1=[["","",""],["","",""],["","",""]];}
 
       // clear all page when user choose another type(2 player, play with computer)
       function clearBox2(){
