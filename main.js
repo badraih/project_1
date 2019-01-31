@@ -119,8 +119,8 @@ $('.game-cell').on("click",clickOnBox); //select class game-cell the call functi
 function storeArr(id){
    switch(id){
                case "box1":
-               arr1[0][0]="O";
-               $("#box1").text("O");
+               arr1[0][0]="O";// store the value in the board
+               $("#box1").text("O");//select box1 and raplace the text by O
                 // code block
                 break;
                case "box2":
@@ -184,7 +184,7 @@ function checkWon(){
       }
       else if(((arr1[2][0]===arr1[2][1]) && (arr1[2][1]!=="")) && (arr1[2][1] ===arr1[2][2])){
          if(arr1[2][0]==="X"){
-            player1Won();// call player1 to show the message
+            player1Won();// call player1Won to show the message
          }
          else if(arr1[2][0]==="O"){
             player2Won();//call player2Won to show the message
@@ -213,7 +213,7 @@ function checkWon(){
             player1Won();// call player1Won to show the message
          }
          else if(arr1[0][0]==="O"){
-            player2Won();
+            player2Won();//call player2Won to show the message
          }
       }
       else if(((arr1[0][1]===arr1[1][1]) && (arr1[1][1]===arr1[2][1]))&&(arr1[1][1]!=="")){
@@ -221,7 +221,7 @@ function checkWon(){
             player1Won();//call player1Won to show the message
          }
          else if(arr1[0][1]==="O"){
-            player2Won();
+            player2Won();//call player2Won to show the message
          }
       }
       else if(((arr1[0][2]===arr1[1][1])&& (arr1[1][1]===arr1[2][0]))&& (arr1[1][1]!=="")){
@@ -242,9 +242,9 @@ function checkWon(){
       }
       else if(countGame>=9){
          $('#message').text("Keep trying");
-         gameOver=true;
+         gameOver=true;// gameover will be true
          countTIE++;
-            $("#TIE").text("TIE: "+" "+(countTIE));
+            $("#TIE").text("TIE: "+" "+(countTIE));//there is no win
          setTimeout(clearBox,3000);
       }
 }//end function
@@ -255,16 +255,26 @@ function player1Won(){
    gameOver=true;
    countPlayer1++;
    $("#player1").text("player1: "+(countPlayer1));
+   
    setTimeout(clearBox,3000);}
 // player2Won() show the message when player2 won 
+
 function player2Won(){
-$('#message').text("player2 won");
+
+
 gameOver=true;
 countPlayer2++;
-$("#player2").text("player2: "+(countPlayer2));
+if(flag===false){
+   $('#message').text("player2 won");
+$("#player2").text("player2: "+(countPlayer2));}
+
+else if (flag===true){
+   $('#message').text("Computer won");
+   $("#player2").text("Computer: "+(countPlayer2));
+}
 setTimeout(clearBox,3000);}
 
-// clear all page when user choose another type(2 player, play with computer)
+// clear all page when user choose another type of game(2 player, play with computer)
    function clearBox(){
       $("#message").text("");
       gameOver=false;
@@ -277,7 +287,7 @@ setTimeout(clearBox,3000);}
       $("#box7").text("");
       $("#box8").text("");
       $("#box9").text("");
-      countGame=0;
+      countGame=0;//set count game 0
       arr1=[["","",""],["","",""],["","",""]];}
 
       // clear all page when user choose another type(2 player, play with computer)
@@ -287,7 +297,7 @@ setTimeout(clearBox,3000);}
          countTIE=0;
          $("#message").text("");
          gameOver=false;
-         $("#box1").text("");
+         $("#box1").text("");//replace the text with empty string
          $("#box2").text("");
          $("#box3").text("");
          $("#box4").text("");
@@ -297,7 +307,7 @@ setTimeout(clearBox,3000);}
          $("#box8").text("");
          $("#box9").text("");
          countGame=0;
-         arr1=[["","",""],["","",""],["","",""]];
+         arr1=[["","",""],["","",""],["","",""]];//the board will be empty
           XO="X";
           $("#TIE").text("TIE: "+" "+(0));
           $("#player1").text("player1: "+(0));
@@ -317,17 +327,22 @@ setTimeout(clearBox,3000);}
 // computerTurn function to know where the first player play 
 //then make the first player unable to win 
 function computerTurn(){
-   checkWon();
+   checkWon();// check if there is winner before check all scenario 
+
+   // check all scenario to make the player1 unable to win when play with computer
+   // check box3
    if((((arr1[0][0]!=="" && arr1[0][1]!=="") && (arr1[0][0]===arr1[0][1]))||((arr1[2][0]!=="" &&arr1[1][1]!=="") && (arr1[2][0]===arr1[1][1]))||((arr1[1][2]!=="" && arr1[2][2]!=="") && (arr1[1][2]===arr1[2][2])))&& ($("#box3").text()==="")){
       $("#box3").text("O");
       arr1[0][2]="O";
       checkWon();
 }
+// check box6
 else if((((arr1[0][2]!=="" && arr1[2][2]!=="") && (arr1[0][2]===arr1[2][2]))||((arr1[1][0]!=="" && arr1[1][1]!=="")&&(arr1[1][0]===arr1[1][1])))&& ($("#box6").text()==="")){
       $("#box6").text("O");
       arr1[1][2]="O";
       checkWon();  
 }
+// check box5
 else if((((arr1[2][0]!=="" && arr1[2][1]!=="") && (arr1[2][0]===arr1[2][1])) || ((arr1[0][0]!=="" && arr1[1][1]!=="") && (arr1[0][0]===arr1[1][1]))||((arr1[0][2]!=="" && arr1[1][2]!=="")&& (arr1[0][2]===arr1[1][2])))&& ($("#box9").text()==="")){
       $("#box9").text("O");
       arr1[2][2]="O";
@@ -344,10 +359,11 @@ else if(((arr1[1][2]!=="" && arr1[1][0]!=="") && (arr1[1][2]===arr1[1][0]))||((a
       arr1[1][1]="O";
       checkWon();
 }
+// check box8 
 else if((((arr1[2][0]!=="" && arr1[2][2]!=="") && (arr1[2][0]===arr1[2][2]))||((arr1[0][1]!=="" && arr1[1][1]!=="")&& (arr1[0][1]===arr1[1][1]))) && ($("#box8").text()==="")){
        $("#box8").text("O");
        arr1[2][1]="O";
-       checkWon();
+       checkWon();// call
 }
 else if((((arr1[0][1]!=="" && arr1[0][2]!=="") && (arr1[0][1]===arr1[0][2]))||((arr1[1][0]!=="" && arr1[2][0]!=="") && (arr1[1][0]===arr1[2][0]))||((arr1[1][1]!=="" && arr1[2][2]!=="") && (arr1[1][1]===arr1[2][2]))) && ($("#box1").text()==="")){  
       $("#box1").text("O");
@@ -370,10 +386,12 @@ randomID();//fill any empty box
 }
 }
 
+// when click 2 player button
 function EndComputerGame(){
       flag=false;//set flag as a false value ** to be computer game **
    clearBox2();}
 
+// when click play with computer
    function ComputerGame(){
       flag=true;
       clearBox2();}
